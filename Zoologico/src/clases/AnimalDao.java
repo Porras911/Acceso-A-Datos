@@ -2,6 +2,7 @@ package clases;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,6 +11,47 @@ import utilsDB.DatabaseConexion;
 public abstract class AnimalDao {
 
 	private static Connection connection;
+	
+	public static Animal findById(int id) {
+		Animal a= null;
+		connection= openConnection();
+		String query = "select * from animales where id = ?";
+		try {
+			PreparedStatement smt = connection.prepareStatement(query);
+			
+			smt.setInt(1, id);
+			ResultSet rs = smt.executeQuery();
+			while(rs.next()) {
+				 a = new Animal(rs.getInt("id"),
+						rs.getString("nombre"),
+						rs.getString("habitat"),
+						rs.getFloat("peso_aprox"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return a;
+		
+	}
+	
+	public static void deleteAnimalByName(String nombre) {
+		connection = openConnection();
+		String query ="delete from animales where nombre = ?";
+		try {
+			PreparedStatement smt = connection.prepareStatement(query);
+			smt.setString(1, nombre);
+			smt.executeUpdate();
+			System.out.println("animal borrado");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		closeConnection();
+		}
 
 	public static void insertarAnimal(Animal animal) {
 		connection = openConnection();

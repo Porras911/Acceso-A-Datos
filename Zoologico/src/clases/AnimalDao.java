@@ -3,6 +3,7 @@ package clases;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import utilsDB.DatabaseConexion;
 
@@ -21,7 +22,7 @@ public abstract class AnimalDao {
 			smt.setString(2, animal.getHabitat());
 			smt.setFloat(3, animal.getPeso_aproximado());
 			smt.execute();
-			System.out.println("Correcto");
+		//	System.out.println("Correcto");
 			
 
 		} catch (SQLException e) {
@@ -29,6 +30,23 @@ public abstract class AnimalDao {
 			e.printStackTrace();
 		}
 		closeConnection();
+	}
+	
+	public static void deleteAnimal() {
+		connection = openConnection();
+		
+		String query = "delete from animales";
+		
+		try {
+			Statement smt = connection.createStatement();
+			smt.executeUpdate(query);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		closeConnection();
+		
 	}
 
 	private static Connection openConnection() {

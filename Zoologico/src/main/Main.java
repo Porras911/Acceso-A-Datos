@@ -10,6 +10,7 @@ public class Main {
 		
 		Animal a = new Animal("Ardilla","Bosque",0.1f);
 		AnimalDao.insertarAnimal(a);
+		AnimalDao.deleteAnimal();
 	}
 
 }

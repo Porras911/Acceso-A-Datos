@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import clases.Animal;
@@ -18,8 +19,12 @@ public class Main {
 //		System.out.println("Dime el nombre del animal que quieres borrar");
 //		String nombre = sc.nextLine();
 //		AnimalDao.deleteAnimalByName("Ardilla");
-		Animal a2 = AnimalDao.findById(18);
-		System.out.println(a2);
+//		Animal a2 = AnimalDao.findById(18);
+//		System.out.println(a2);
+		ArrayList<Animal> animales= AnimalDao.findAllAnimales();
+		for(int i = 0;i<animales.size();i++ ) {
+			System.out.println(animales.get(i)+"\n");
+		}
 		
 	}
 

@@ -13,6 +13,11 @@ public abstract class AnimalDao {
 
 	private static Connection connection;
 	
+	public static void updateAnimal() {
+		connection = openConnection();
+		
+	}
+	
 	
 	public static ArrayList<Animal> findAllAnimales(){
 		connection= openConnection();

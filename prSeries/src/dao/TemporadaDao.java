@@ -36,7 +36,8 @@ public class TemporadaDao implements Dao<Temporada> {
 	}
 
 	@Override
-	public void buscarPorId(int i) {
+	public Temporada buscarPorId(int i) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

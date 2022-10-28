@@ -12,7 +12,8 @@ public class Serie {
 	
 	
 
-
+	
+	
 	public Serie(String titulo, int edad, String plataforma) {
 		super();
 		this.titulo = titulo;

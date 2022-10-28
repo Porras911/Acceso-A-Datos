@@ -9,7 +9,8 @@ public class Main {
 		Serie serie = new Serie("Los Simpsons",7,"Disney Plus");
 		SerieDao serieDao = new SerieDao();
 		
-		serieDao.insertar(serie);
+//		serieDao.insertar(serie);
+		System.out.println(serieDao.buscarPorId(1));
 
 	}
 

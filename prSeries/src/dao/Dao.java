@@ -2,6 +2,8 @@
 
 import java.util.ArrayList;
 
+
+
 public interface Dao<T> {
 	
 	public void insertar(T t);
@@ -12,5 +14,5 @@ public interface Dao<T> {
 	
 	public ArrayList<T> buscarTodos();
 	
-	public void buscarPorId(int i);
+	public T buscarPorId(int i);
 }

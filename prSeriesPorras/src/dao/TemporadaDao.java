@@ -13,7 +13,23 @@ public class TemporadaDao implements Dao<Temporada> {
 
 	@Override
 	public void insertar(Temporada t) {
+		connection = openConnection();
 		
+		String query = "insert into temporadas (num_temporada, titulo, "
+				+ "serie_id) values (?, ?, ?)";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, t.getNum_temporada());
+			ps.setString(2, t.getTitulo());
+			ps.setInt(3, t.getSerie().getId()); 
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		closeConnection();
 	}
 	
 
@@ -58,5 +74,21 @@ public class TemporadaDao implements Dao<Temporada> {
 		connection = null;
 	}
 
+	public void borrarPorSerie(int serie_id) {
+		connection = openConnection();
+		
+		String query ="delete from temporadas where serie_id= ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, serie_id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		closeConnection();
+	}
 
 }

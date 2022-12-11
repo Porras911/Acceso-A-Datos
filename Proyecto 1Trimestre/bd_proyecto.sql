@@ -31,4 +31,5 @@ delete from  clientes;
 select * from pedidos;
 delete from pedidos;
 drop table clientes, pedidos;
+UPDATE clientes SET id = id - 1;
 

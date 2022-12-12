@@ -108,8 +108,8 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 	@Override
 	public void insertar(Cliente cliente) {
 		// TODO Auto-generated method stub
-		autoincrement();
-		safeBorrar();
+//		autoincrement();
+//		safeBorrar();
 		connection = openConnection();
 
 		String query = "insert into clientes (nombre, apellido1, apellido2, edad)" + " values (?, ?, ?, ?)";

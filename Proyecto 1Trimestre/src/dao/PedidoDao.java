@@ -77,8 +77,8 @@ public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 	public void insertar(Pedido t) {
 		// TODO Auto-generated method stub
 
-		autoincrement();
-		safeBorrar();
+//		autoincrement();
+//		safeBorrar();
 		connection = openConnection();
 
 		String query = "insert into pedidos (nombre, precio, cliente_id) values (?, ?, ?)";

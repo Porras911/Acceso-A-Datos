@@ -90,7 +90,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente: id:" + id + "\n nombre: " + nombre + "\n apellido1: " + apellido1 + "\n apellido2: " + apellido2
-				+ "\n edad: " + edad + "\n\t pedidos:" + pedidos ;
+				+ "\n edad: " + edad + "\n pedidos:" + pedidos+"\n" ;
 	}
 
 	

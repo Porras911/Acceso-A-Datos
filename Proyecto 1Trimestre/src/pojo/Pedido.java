@@ -64,7 +64,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "\n\t id: " + id + "\n\t Articulo: " + nombre + "\n\t precio: " + precio + "\n\t cliente: " + cliente.getNombre()+"\n--------------" ;
+		return "\t id: " + id + "\t Articulo: " + nombre + "\t precio: " + precio + "\t cliente: " + cliente.getNombre()+"" ;
 	}
 
 }

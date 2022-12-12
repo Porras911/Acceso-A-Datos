@@ -11,7 +11,7 @@ public class DatabaseConnection {
 	public Connection getConnection () {
 		String dbName = "bd_proyecto";
 		String userName = "root";
-		String password = "Perculaes911";
+		String password = "admin";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

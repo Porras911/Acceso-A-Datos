@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		
+		// alter table series Auto_increment =1;
 		Serie serie = new Serie("Los Simpsons",7,"Disney Plus");
 		Serie serie1 = new Serie("The Mandalorian",7,"Disney Plus");
 

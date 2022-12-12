@@ -12,6 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		ClienteDao clienteDao = new ClienteDao();
 		PedidoDao pedidoDao = new PedidoDao();
+		clienteDao.safeBorrar();
 		
 		
 		Cliente cl = new Cliente("porras", "Porras", "Robles", 26);
@@ -85,7 +86,8 @@ public class Main {
 			System.out.println(pedidoFor);
 		}
 		
-		
+		clienteDao.autoincrement();
+		pedidoDao.autoincrement();
 //		System.out.println(cliente);
 //		System.out.println(cl);
 //		System.out.println(cl3);

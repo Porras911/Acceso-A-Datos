@@ -11,12 +11,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Serie serie = new Serie("Los Simpsons", 7, "Disney Plus");
+		Serie serie = new Serie("Los Simpsons", 7, "Disney Plus");
 		SerieDao serieDao = new SerieDao();
-		//serieDao.insertar(serie);
+//		serieDao.insertar(serie);
+		System.out.println(serie.getId());
 		//System.out.println(serieDao.buscarPorId(1)); 
-		//Serie serie = serieDao.buscarPorId(1);
-		//System.out.println(serie); 
+		Serie serie1 = serieDao.buscarPorId(1);
+		System.out.println(serie1); 
 		//Temporada t1 = new Temporada(1, "Temporada 1", serie);
 		//Temporada t2 = new Temporada(2, "Temporada 2", serie);
 		
@@ -39,14 +40,14 @@ public class Main {
 			System.out.println(temporada); 
 		}*/
 		
-		ArrayList<Serie> series = serieDao.buscarTodos();
-		
-		for (Serie serie : series) {
-			System.out.println("SERIE: " + serie.getTitulo()); 
-			for (Temporada temporada : serie.getTemporadas()) {
-				System.out.println("TEMPORADA: " + temporada.getTitulo()); 
-			}
-		}
+//		ArrayList<Serie> series = serieDao.buscarTodos();
+//		
+//		for (Serie serie : series) {
+//			System.out.println("SERIE: " + serie.getTitulo()); 
+//			for (Temporada temporada : serie.getTemporadas()) {
+//				System.out.println("TEMPORADA: " + temporada.getTitulo()); 
+//			}
+//		}
 		
 		//	Insertar temporadas para The Mandalorian
 		//SerieDao serieDao = new SerieDao();

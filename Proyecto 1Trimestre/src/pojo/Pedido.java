@@ -7,6 +7,14 @@ public class Pedido {
 	private int precio;
 	private Cliente cliente;
 
+	/**
+	 * Constructor con todos los atributos.
+	 * 
+	 * @param id      id del pedido
+	 * @param nombre  nombre del pedido
+	 * @param precio  precio del pedido
+	 * @param cliente cliente con el que se relaciona el pedido
+	 */
 	public Pedido(int id, String nombre, int precio, Cliente cliente) {
 		super();
 		this.id = id;
@@ -15,6 +23,14 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
+	/**
+	 * Constructor sin el id
+	 * @param id      id del pedido
+	 * @param nombre  nombre del pedido
+	 * @param precio  precio del pedido
+	 * @param cliente cliente con el que se relaciona el pedido
+	 */
+
 	public Pedido(String nombre, int precio, Cliente cliente) {
 		super();
 		this.nombre = nombre;
@@ -22,6 +38,12 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 	
+	/**
+	 * Constructor sin el cliente.
+	 * @param id      id del pedido
+	 * @param nombre  nombre del pedido
+	 * @param precio  precio del pedido
+	 */
 
 	public Pedido(int id, String nombre, int precio) {
 		super();
@@ -64,7 +86,8 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "\t id: " + id + "\t Articulo: " + nombre + "\t precio: " + precio + "\t cliente: " + cliente.getNombre()+"" ;
+		return "id: " + id + "\t Articulo: " + nombre + "\t precio: " + precio + "\t cliente: " + cliente.getNombre()
+				+ "";
 	}
 
 }

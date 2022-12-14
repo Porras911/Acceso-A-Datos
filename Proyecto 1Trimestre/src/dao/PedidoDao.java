@@ -12,7 +12,9 @@ import pojo.Pedido;
 public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 
 	private static Connection connection;
-
+	/**
+	 * Constructor vacio que nos permite inicializar la clase en el main.
+	 */
 	public PedidoDao() {
 
 	}
@@ -77,8 +79,7 @@ public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 	public void insertar(Pedido t) {
 		// TODO Auto-generated method stub
 
-//		autoincrement();
-//		safeBorrar();
+
 		connection = openConnection();
 
 		String query = "insert into pedidos (nombre, precio, cliente_id) values (?, ?, ?)";
@@ -145,7 +146,10 @@ public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 		closeConnection();
 
 	}
-
+	/**
+	 * Metodo que borra los pedidos de un cliente.
+	 * @param cliente_id cliente del que quermos borrar sus pedidos.
+	 */
 	public void borrarPedidoPorCliente(int cliente_id) {
 		connection = openConnection();
 
@@ -162,7 +166,12 @@ public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 
 		closeConnection();
 	}
-
+	
+	/**
+	 * Metodo que utilizamos para obtener el cliente 
+	 * @param cliente_id in que referencia al id del cliente que necesitamos para obtenerlo.
+	 * @return devuelve el cliente.
+	 */
 	public Cliente obtenerCliente(int cliente_id) {
 		Cliente cliente = null;
 		connection = openConnection();
@@ -188,7 +197,10 @@ public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 
 		return cliente;
 	}
-
+	
+	/**
+	 * Metodo para ejecutar la sentencia que resetea los ids de la tabla pedidos a 0 en la base de datos.
+	 */
 	public void autoincrement() {
 		connection = openConnection();
 
@@ -201,34 +213,43 @@ public class PedidoDao extends ObjetoDao implements InterfazDao<Pedido> {
 			e.printStackTrace();
 		}
 		closeConnection();
+		
 	}
 
-	public void safeBorrar() {
-		connection = openConnection();
 
-		String query2 = "SET SQL_SAFE_UPDATES = 0;";
+	/**
+	 * Metodo que devuelve el precio minimo de los productos.
+	 * @return devuelve el precio.
+	 */
+	public int precioMinimo() {
+		int precioMinimo = 0;
+		
+		connection = openConnection();
+		
+
+        String query = "SELECT MIN(precio) FROM pedidos";
+   
 		try {
-			PreparedStatement ps2 = connection.prepareStatement(query2);
-			ps2.executeUpdate();
+		     PreparedStatement	ps = connection.prepareStatement(query);
+		    ResultSet rs = ps.executeQuery();
+		      
+
+	        if (rs.next()) {
+	            precioMinimo = rs.getInt(1);
+	        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		closeConnection();
+    
+
+        return precioMinimo;
+		 
+		
+		
+		
 	}
 
-//	public void resetID() {
-//		connection = openConnection();
-//
-//		String query2 = "UPDATE pedidos SET id = id - 1;";
-//		try {
-//			PreparedStatement ps2 = connection.prepareStatement(query2);
-//			ps2.executeUpdate();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		closeConnection();
-//	}
+
 
 }

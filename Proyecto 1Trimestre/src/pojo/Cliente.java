@@ -11,16 +11,14 @@ public class Cliente {
 	private int edad;
 	private ArrayList<Pedido> pedidos;
 
-//	public Cliente(int id, String nombre, String apellido1, String apellido2, int edad) {
-//		super();
-//		this.id = id;
-//		this.nombre = nombre;
-//		this.apellido1 = apellido1;
-//		this.apellido2 = apellido2;
-//		this.edad = edad;
-//
-//	}
 
+/**
+ * Constructor sin el id.
+ * @param nombre nombre del cliente
+ * @param apellido1 apellido del cliente
+ * @param apellido2 segundo apellido del cliente
+ * @param edad edad del cliente
+ */
 	public Cliente(String nombre, String apellido1, String apellido2, int edad) {
 		super();
 		this.nombre = nombre;
@@ -31,7 +29,15 @@ public class Cliente {
 	}
 	
 	
-
+/**
+ * Metodo que contiene todos los atributos.
+ * @param id id del cliente
+ * @param nombre nombre del cliente
+ * @param apellido1 apellido del cliente
+ * @param apellido2 segundo apellido del cliente
+ * @param edad edad del cliente
+ * @param pedidos lista de pedidos del cliente.
+ */
 	public Cliente(int id,String nombre, String apellido1, String apellido2, int edad, ArrayList<Pedido> pedidos) {
 		super();
 		this.id = id;
@@ -89,8 +95,8 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente: id:" + id + "\n nombre: " + nombre + "\n apellido1: " + apellido1 + "\n apellido2: " + apellido2
-				+ "\n edad: " + edad + "\n pedidos:" + pedidos+"\n" ;
+		return "\n id:" + id + "\n nombre: " + nombre + "\n apellido1: " + apellido1 + "\n apellido2: " + apellido2
+				+ "\n edad: " + edad + "\n pedidos:" + pedidos.toString().replaceAll("[\\[\\]]", "")+"\n" ;
 	}
 
 	

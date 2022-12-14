@@ -65,7 +65,7 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		closeConnection();
 		return series;
 	}
 
@@ -143,7 +143,7 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 			ps.setInt(2, edad);
 			ps.setString(3, plataforma);
 			ps.setInt(4, id);
-			ps.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +178,7 @@ public class SerieDao extends ObjetoDao implements InterfazDao<Serie> {
 			e.printStackTrace();
 		}
 		
-		//closeConnection();
+		//closeConnection();+
 		
 		return temporadas;
 	}

@@ -12,11 +12,13 @@ import pojo.Pedido;
 public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 
 	private static Connection connection;
-
+/**
+ *  Constructor vacio que nos permite inicializar la clase en el main.
+ */
 	public ClienteDao() {
 
 	}
-
+	
 	@Override
 	public ArrayList<Cliente> buscarTodos() {
 		connection = openConnection();
@@ -29,7 +31,6 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-//				ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 
 				Cliente cliente = new Cliente(rs.getInt("id"),
 						rs.getString("nombre"),
@@ -39,23 +40,6 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 						null );
 				cliente.setPedidos(obtenerPedidos(cliente));
 
-//				String queryPedidos = "select * from pedidos where cliente_id = ?";
-//				PreparedStatement psPedidos = connection.prepareStatement(queryPedidos);
-//				psPedidos.setInt(1, rs.getInt("id"));
-//				ResultSet rsPedidos = psPedidos.executeQuery();
-//
-//				while (rsPedidos.next()) {
-//					Pedido pedido = new Pedido(
-//							rs.getInt("id"),
-//							rs.getString("nombre"),
-//							rs.getInt("precio"),
-//							cliente
-//							);
-//
-//					pedidos.add(pedido);
-//				}
-//
-//				cliente.setPedidos(pedidos);
 				
 
 				clientes.add(cliente);
@@ -108,11 +92,11 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 	@Override
 	public void insertar(Cliente cliente) {
 		// TODO Auto-generated method stub
-//		autoincrement();
-//		safeBorrar();
+
 		connection = openConnection();
 
-		String query = "insert into clientes (nombre, apellido1, apellido2, edad)" + " values (?, ?, ?, ?)";
+		String query = "insert into clientes (nombre, apellido1, apellido2, edad)" 
+		+ " values (?, ?, ?, ?)";
 
 		try {
 
@@ -163,7 +147,7 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 
 	@Override
 	public void borrar(Cliente t) {
-		safeBorrar();
+
 		
 		int cliente_id = t.getId();
 
@@ -183,10 +167,14 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 			e.printStackTrace();
 		}
 		closeConnection();
-//		resetID();
+
 
 	}
-
+/**
+ * Metodo para obtener todos los pedidos de un cliente
+ * @param cliente cliente del que queremos sus pedidos
+ * @return una lista de pedidos
+ */
 	public ArrayList<Pedido> obtenerPedidos(Cliente cliente) {
 		ArrayList<Pedido> pedidos = new ArrayList<>();
 
@@ -217,7 +205,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 
 		return pedidos;
 	}
-
+		/**
+		 * Metodo para ejecutar la sentencia que resetea los ids de la tabla clientes a 0 en la base de datos.
+		 */
 	public void autoincrement() {
 		connection = openConnection();
 
@@ -230,7 +220,11 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 			e.printStackTrace();
 		}
 		closeConnection();
+		
 	}
+	/**
+	 * Metodo que ejecuta la sentencia que permite borrar las tablas en la base de datos
+	 */
 	public void safeBorrar() {
 		connection = openConnection();
 
@@ -243,19 +237,8 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente> {
 			e.printStackTrace();
 		}
 		closeConnection();
+		
 	}
-//	public void resetID() {
-//		connection = openConnection();
-//
-//		String query2 = "UPDATE clientes SET id = id - 1;";
-//		try {
-//			PreparedStatement ps2 = connection.prepareStatement(query2);
-//			ps2.executeUpdate();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		closeConnection();
-//	}
+
 
 }
